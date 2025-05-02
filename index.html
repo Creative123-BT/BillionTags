@@ -1,0 +1,2396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homepage</title>
+    <link rel="icon" href="/assets/img/Logo/infinity.png" type="image/x-icon" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: "Raleway", sans-serif;
+      }
+
+      /* 9221e5 */
+      .hero-section {
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .hero-video-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        /* background: rgba(0, 0, 0, 0.4); */
+        z-index: 1;
+      }
+      /* --- NAVBAR STYLES --- */
+      .navbar {
+        transition: background 0.3s, box-shadow 0.3s;
+        z-index: 10;
+      }
+      .navbar .nav-link {
+        color: #fff !important;
+        transition: color 0.2s;
+      }
+      .navbar .nav-link.active {
+        color: #9221e5 !important;
+      }
+      .navbar .nav-link:not(.active):hover {
+        color: #9221e5 !important;
+      }
+      .navbar .dropdown-toggle::after {
+        display: none !important;
+      }
+      /* --- SCROLLED STATE --- */
+      .navbar.scrolled {
+        background: #fff !important;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.12);
+      }
+      .navbar.scrolled .nav-link {
+        color: #111 !important;
+      }
+      .navbar.scrolled .nav-link.active {
+        color: #9221e5 !important;
+      }
+      .navbar.scrolled .nav-link:not(.active):hover {
+        color: #9221e5 !important;
+      }
+      .dropdown-menu {
+        background: rgba(30, 30, 60, 0.97);
+        border-radius: 0.5rem;
+        border: none;
+        min-width: 180px;
+        padding: 0.5rem 0;
+        margin-top: 0.5rem;
+      }
+      .dropdown-item {
+        color: #fff;
+        font-weight: 500;
+        transition: background 0.15s, color 0.15s;
+        cursor: pointer;
+      }
+      .dropdown-item:hover,
+      .dropdown-item:focus {
+        background: #9221e5;
+        color: #fff;
+      }
+      /* Default toggler icon (white) */
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.85%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        transition: background-image 0.3s ease;
+      }
+
+      /* Toggler icon when navbar is scrolled (black lines) */
+      .navbar.scrolled .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,0.85%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 2rem;
+        letter-spacing: -1px;
+        transition: all 0.3s ease;
+        color: #fff !important;
+      }
+      .navbar.scrolled .navbar-brand {
+        color: #111 !important;
+      }
+      .navbar-brand img {
+        height: 38px;
+        width: auto;
+        margin-right: 8px;
+        margin-top: -3px;
+        transition: all 0.3s ease;
+      }
+      .hero-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        position: relative;
+        z-index: 2;
+        margin-top: 8vh;
+      }
+      .hero-content h2 {
+        font-size: 3.8vw;
+        font-weight: 900;
+        color: transparent;
+        -webkit-text-stroke: 1px #fff;
+        text-stroke: 2px #fff;
+        text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+        margin-bottom: 0.2em;
+        letter-spacing: 1px;
+      }
+      .hero-content h1 {
+        font-size: 3.8vw;
+        font-weight: 900;
+        color: #fff;
+        text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+        margin-bottom: 0.7em;
+        letter-spacing: 1px;
+      }
+      @media (max-width: 991px) {
+        .hero-content h2 {
+          font-size: 2rem;
+        }
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+        .navbar-brand {
+          font-size: 1.5rem;
+        }
+        .navbar-brand img {
+          height: 32px;
+        }
+      }
+      @media (max-width: 575px) {
+        .hero-content h2 {
+          font-size: 1.1rem;
+          -webkit-text-stroke: 1px #fff;
+        }
+        .hero-content h1 {
+          font-size: 1.4rem;
+        }
+        .navbar-brand {
+          font-size: 1.1rem;
+        }
+        .navbar-brand img {
+          height: 26px;
+        }
+      }
+      /* Dropdown on hover for desktop */
+      @media (min-width: 992px) {
+        .navbar .dropdown:hover .dropdown-menu {
+          display: block;
+          margin-top: 0.5rem;
+        }
+        .navbar .dropdown-menu {
+          pointer-events: auto;
+        }
+      }
+
+      /* Custom CSS for Services Section */
+      .service-card {
+        height: 270px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .service-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.5),
+          rgba(0, 0, 0, 0.1),
+          transparent
+        );
+        height: 100%;
+      }
+
+      .service-overlay-light {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+      }
+
+      /* .services-section h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        background-image: url("assets/img/Logo/infinity.png");
+        background-size: cover;
+        background-position: center;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+
+      } */
+      .title-design {
+        /* font-size: 28px; */
+        /* font-weight: 700; */
+        /* background-image: url("assets/img/Logo/infinity.png"); */
+        /* background-size: cover; */
+        /* background-position: left; */
+        /* background-repeat: no-repeat; */
+        /* -webkit-background-clip: text; */
+        /* -webkit-text-fill-color: transparent; */
+        /* background-clip: text; */
+        /* color: transparent; */
+        text-align: center;
+        margin-bottom: 40px;
+        margin-right: 40px;
+      }
+      .title-design img {
+        width: 150px;
+        height: auto;
+      }
+
+      .services-section h3 {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 767px) {
+        .service-card {
+          height: 220px;
+        }
+
+        .services-section h2 {
+          font-size: 2rem;
+        }
+
+        .services-section h3 {
+          font-size: 1.2rem;
+        }
+      }
+      .market-section-title {
+        font-size: 3rem;
+        font-weight: 700;
+        background-image: url("assets/img/Logo/infinity.png");
+        background-size: cover;
+        background-position: center;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+      }
+      .bar-layered {
+        width: 100px;
+        position: relative;
+      }
+      .bar-total,
+      .bar-immigrant,
+      .bar-ethnicities {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        font-weight: 400;
+        font-size: 1rem;
+        user-select: none;
+        box-sizing: border-box;
+      }
+      .bar-total {
+        background: #d5deff;
+        color: #4a5bbf;
+        border-radius: 8px;
+        z-index: 1;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 10px;
+        box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .bar-immigrant {
+        background: #ff7575;
+        color: #181c2f;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        z-index: 2;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 10px;
+        box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .bar-ethnicities {
+        background: #030b30;
+        color: #fff;
+        z-index: 3;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .bar-total span,
+      .bar-immigrant span,
+      .bar-ethnicities span {
+        font-family: "Nunito", sans-serif;
+        width: 100%;
+        text-align: center;
+      }
+      .country-btn {
+        background: #fff;
+        border: 1.5px solid #e3e9ff;
+        border-radius: 12px;
+        padding: 0.5rem 1.1rem 0.3rem 1.1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 110px;
+        font-weight: 500;
+        font-size: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        transition: box-shadow 0.18s;
+        gap: 2px;
+      }
+      .country-btn img {
+        width: 28px;
+        height: 20px;
+        border-radius: 3px;
+        margin-bottom: 2px;
+        object-fit: cover;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.11);
+      }
+      .country-btn span {
+        color: #181c2f;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+      .country-btn:focus,
+      .country-btn:hover {
+        box-shadow: 0 6px 24px rgba(44, 62, 80, 0.13);
+        border-color: #9221e5;
+      }
+      @media (max-width: 991px) {
+        .bar-layered {
+          width: 40px !important;
+        }
+        .country-btn {
+          min-width: 70px;
+          font-size: 0.87rem;
+        }
+        .country-btn img {
+          width: 20px;
+          height: 14px;
+        }
+      }
+      @media (max-width: 767px) {
+        .bar-layered {
+          width: 24px !important;
+        }
+        .country-btn {
+          min-width: 50px;
+          font-size: 0.7rem;
+          padding: 0.3rem 0.3rem 0.1rem 0.3rem;
+        }
+        .country-btn img {
+          width: 16px;
+          height: 10px;
+        }
+        .container {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+      }
+
+      .audience-card,
+      .audience-card-lg {
+        height: 280px;
+        min-height: 180px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .audience-card-lg {
+        height: 280px;
+        min-height: 200px;
+      }
+      .audience-card:hover,
+      .audience-card-lg:hover {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 10px 32px rgba(44, 62, 80, 0.11);
+      }
+      .audience-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.3) 30%,
+          rgba(0, 0, 0, 0.1) 100%,
+          transparent 100%
+        );
+        z-index: 2;
+        pointer-events: none;
+      }
+      .audience-card img,
+      .audience-card-lg img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        min-height: 100%;
+        min-width: 100%;
+        z-index: 1;
+      }
+      @media (max-width: 991px) {
+        .audience-card,
+        .audience-card-lg {
+          height: 160px;
+        }
+        .audience-card-lg {
+          height: 180px;
+        }
+      }
+      @media (max-width: 575px) {
+        .audience-card,
+        .audience-card-lg {
+          height: 110px;
+          min-height: 90px;
+        }
+        .audience-card-lg {
+          height: 130px;
+          min-height: 100px;
+        }
+        .audience-overlay h3 {
+          font-size: 1rem !important;
+        }
+      }
+
+      .adtype-tile {
+        min-height: 260px;
+        height: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: hidden;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+      }
+      .adtype-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        min-height: 260px;
+        min-width: 100%;
+        display: block;
+      }
+      .adtype-tile .position-absolute {
+        z-index: 2;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+      }
+      @media (max-width: 991px) {
+        .adtype-tile {
+          min-height: 110px;
+        }
+        .adtype-tile img {
+          min-height: 90px;
+        }
+      }
+      @media (max-width: 575px) {
+        .adtype-tile {
+          min-height: 70px;
+        }
+        .adtype-tile img {
+          min-height: 60px;
+        }
+        .adtype-tile .position-absolute {
+          font-size: 0.9rem !important;
+        }
+      }
+      .row.gx-0,
+      .row.gy-0 {
+        --bs-gutter-x: 0;
+        --bs-gutter-y: 0;
+      }
+
+      .brands-grid {
+        gap: 10px;
+        row-gap: 5px;
+        column-gap: 10px;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        /* max-width: 1100px; */
+      }
+      .brand-logo {
+        max-width: 120px;
+        max-height: 60px;
+        margin: 10px;
+        object-fit: cover;
+        filter: grayscale(0%);
+        transition: filter 0.2s, transform 0.2s;
+        background: transparent;
+        display: block;
+      }
+      .brand-logo:hover {
+        filter: grayscale(0%) brightness(1.1)
+          drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+        transform: scale(1.08);
+      }
+      @media (max-width: 991px) {
+        .brand-logo {
+          max-width: 80px;
+          max-height: 36px;
+          margin: 10px 8px;
+        }
+        .brands-grid {
+          gap: 14px;
+          column-gap: 14px;
+        }
+      }
+      @media (max-width: 575px) {
+        .brand-logo {
+          max-width: 60px;
+          max-height: 28px;
+          margin: 6px 4px;
+        }
+        .brands-grid {
+          gap: 8px;
+          column-gap: 8px;
+        }
+      }
+
+      .btn-outline-primary:hover {
+        background-color: #a259ff;
+        color: white !important;
+        border-color: #a259ff !important;
+      }
+      .case-studies-section {
+        background: #f7f7fa;
+        padding: 40px 0 30px 0;
+      }
+      .case-studies-title {
+        font-size: 3rem;
+        font-weight: 700;
+        background-image: url("assets/img/Logo/infinity.png");
+        background-size: cover;
+        background-position: center;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .case-studies-title span {
+        background: linear-gradient(90deg, #a259ff 20%, #f24e1e 80%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+      .marquee-row {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+        margin-bottom: 24px;
+        position: relative;
+      }
+      .marquee-track {
+        display: inline-block;
+        white-space: nowrap;
+        animation: marquee-left 22s linear infinite;
+        vertical-align: top;
+      }
+      .marquee-row.reverse .marquee-track {
+        animation: marquee-right 22s linear infinite;
+      }
+      @keyframes marquee-left {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      @keyframes marquee-right {
+        0% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      .brand-card {
+        display: inline-block;
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 2px 16px #0001;
+        margin: 0 16px;
+        overflow: hidden;
+        width: 280px;
+        height: 280px;
+        vertical-align: top;
+        position: relative;
+      }
+      .brand-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 18px;
+      }
+      .brand-logos {
+        position: absolute;
+        left: 14px;
+        bottom: 14px;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.1rem;
+        padding: 4px 12px;
+        border-radius: 10px;
+        letter-spacing: 1px;
+        pointer-events: none;
+      }
+      @media (max-width: 991px) {
+        .brand-card {
+          width: 140px;
+          height: 140px;
+          margin: 0 8px;
+        }
+        .brand-logos {
+          font-size: 0.95rem;
+          padding: 3px 8px;
+        }
+        .case-studies-title {
+          font-size: 1.4rem;
+        }
+      }
+      @media (max-width: 575px) {
+        .brand-card {
+          width: 90px;
+          height: 90px;
+          margin: 0 4px;
+        }
+        .marquee-row {
+          margin-bottom: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero-section">
+      <!-- Video Background -->
+      <video
+        class="hero-video-bg"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="https://pplx-res.cloudinary.com/image/private/user_uploads/sdVfMwolMupSfGZ/Screenshot-2025-04-30-113122.jpg"
+      >
+        <source
+          src="./assets/img/Homepage/Section 1/Homepage banner video 1.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="hero-overlay"></div>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark px-1 fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              src="./assets/img/Logo/BILLION TAGS PNG white.png"
+              alt="Billion Logo"
+              id="navbarLogo"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Home</a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="#">Company</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+              </li>
+              <!-- Markets Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="marketsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Markets
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="marketsDropdown">
+                  <li><a class="dropdown-item" href="#">United States</a></li>
+                  <li><a class="dropdown-item" href="#">Canada</a></li>
+                  <li><a class="dropdown-item" href="#">Australia</a></li>
+                  <li><a class="dropdown-item" href="#">New Zealand</a></li>
+                  <li><a class="dropdown-item" href="#">Europe</a></li>
+                  <li><a class="dropdown-item" href="#">Middle East</a></li>
+                  <li><a class="dropdown-item" href="#">Asia Pacific</a></li>
+                </ul>
+              </li>
+              <!-- Audiences Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="audiencesDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Audiences
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="audiencesDropdown">
+                  <li><a class="dropdown-item" href="#">Ethnicities</a></li>
+                  <li><a class="dropdown-item" href="#">New Comers</a></li>
+                  <li><a class="dropdown-item" href="#">Pride</a></li>
+                  <li><a class="dropdown-item" href="#">Religion</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">Platforms</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Channels</a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="#">Brands</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Expertise</a>
+              </li>
+              <!-- Blogs & Insights Dropdown -->
+              <li class="nav-item">
+                <a class="nav-link" href="#">Blogs</a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="#">Utility</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Hero Content -->
+      <div class="hero-content">
+        <h2>Where Mainstream Meets</h2>
+        <h1>Multicultural Excellence!</h1>
+      </div>
+    </div>
+
+    <!-- Our Services Section -->
+    <section class="services-section py-5">
+      <div class="container">
+        <!-- Section Title -->
+        <!-- <h2 class="text-center mb-5">
+          <span style="color: #3a1078">O</span
+          ><span style="color: #4e31aa">u</span
+          ><span style="color: #2fa4ff">r</span>
+          <span style="color: #00ffdd">S</span
+          ><span style="color: #ff5e78">e</span
+          ><span style="color: #ff9776">r</span
+          ><span style="color: #ffb55a">v</span
+          ><span style="color: #3a1078">i</span
+          ><span style="color: #4e31aa">c</span
+          ><span style="color: #2fa4ff">e</span
+          ><span style="color: #00ffdd">s</span>
+        </h2> -->
+        <!-- <h2 class="title-design">Our Services</h2> -->
+        <div class="title-design">
+          <img src="/assets/img/Homepage/image.png" alt="" />
+        </div>
+
+        <!-- First Row (3 cards) -->
+        <div class="row g-4 mb-4">
+          <!-- Ethnocultural Strategy Card -->
+          <div class="col-md-3">
+            <div
+              class="service-card position-relative rounded-2 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 2/1 ethnoculture.jpeg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Ethnocultural Strategy"
+              />
+              <div
+                class="service-overlay d-flex align-items-end justify-content-center p-3"
+              >
+                <h3 class="text-white mb-0">Ethnocultural Strategy</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Diverse Audience Planning Card -->
+          <div class="col-md-6">
+            <div
+              class="service-card position-relative rounded-2 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 2/2 diverse audience.jpg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Diverse Audience Planning"
+              />
+              <div
+                class="service-overlay d-flex align-items-end justify-content-center p-3"
+              >
+                <h3 class="text-white mb-0">Diverse Audience Planning</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Creative Development Card -->
+          <div class="col-md-3">
+            <div
+              class="service-card position-relative rounded-2 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 2/3 creative.jpg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Creative Development"
+              />
+              <div
+                class="service-overlay-light d-flex justify-content-center p-4"
+              >
+                <h3 class="text-dark mb-0">Creative Development</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Row (3 cards with different widths) -->
+        <div class="row g-4 mb-4">
+          <!-- Multi-lingual Transcreations Card -->
+          <div class="col-md-3">
+            <div
+              class="service-card position-relative rounded-2 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 2/4 multilingual.jpeg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Multi-lingual Transcreations"
+              />
+              <div
+                class="service-overlay d-flex align-items-end justify-content-center p-2"
+              >
+                <h3 class="text-white text-center mb-0">
+                  Multi-lingual<br />Transcreations
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Campaign Trafficking Card -->
+          <div class="col-md-3">
+            <div
+              class="service-card position-relative rounded-2 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 2/5 campaign.jpg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Campaign Trafficking"
+              />
+              <div
+                class="service-overlay d-flex align-items-start justify-content-center p-4"
+              >
+                <h3 class="text-white text-center">
+                  Campaign<br />Trafficking & Optimization
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Media Planning Card -->
+          <div class="col-md-6">
+            <div
+              class="service-card position-relative rounded-2 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 2/6 media planning.jpg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Media Planning"
+              />
+              <div class="service-overlay d-flex align-items-center p-4">
+                <h3 class="text-dark mb-0">Media Planning & Buying</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Third Row (4 cards) -->
+        <div class="row g-4">
+          <!-- Card 1 -->
+          <div class="col-md-3">
+            <div
+              class="service-card position-relative rounded-2 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 2/7 data driven.png"
+                class="w-100 h-100 object-fit-cover"
+                alt="Digital Marketing"
+              />
+              <div
+                class="service-overlay d-flex align-items-end justify-content-center p-2"
+              >
+                <h3 class="text-white text-center mb-0">
+                  Data Driven <br />
+                  Analytics & Insights
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-md-3">
+            <div
+              class="service-card position-relative rounded-2 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 2/8 multicultural PR.jpeg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Content Creation"
+              />
+              <div
+                class="service-overlay d-flex align-items-end justify-content-center p-3"
+              >
+                <h3 class="text-white mb-0">Multicultural PR</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-md-3">
+            <div
+              class="service-card position-relative rounded-2 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 2/9 influencer.jpeg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Social Media"
+              />
+              <div
+                class="service-overlay d-flex align-items-end justify-content-center p-3"
+              >
+                <h3 class="text-white mb-0">Influencer Marketing</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="col-md-3">
+            <div
+              class="service-card position-relative rounded-2 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 2/10 Production.jpeg"
+                class="w-100 h-100 object-fit-cover"
+                alt="Analytics"
+              />
+              <div
+                class="service-overlay d-flex align-items-end justify-content-center p-3"
+              >
+                <h3 class="text-white mb-0">Production</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" style="background: #f5f6fa">
+      <div class="container">
+        <!-- Title -->
+        <!-- <h2
+          class="text-center mb-5 market-section-title"
+
+        >Markets
+
+        </h2> -->
+        <!-- <h2 class="title-design">Markets</h2> -->
+        <div class="title-design">
+          <img
+            style="width: 100px"
+            src="/assets/img/Homepage/image (2).png"
+            alt=""
+          />
+        </div>
+        <div
+          class="d-flex justify-content-center align-items-end flex-wrap gap-2 mb-4"
+        >
+          <!-- Example for United States -->
+          <div class="d-flex flex-column align-items-center">
+            <div
+              class="bar-layered position-relative"
+              style="height: 260px; width: 90px"
+            >
+              <!-- Total (back) -->
+              <div
+                class="bar-total position-absolute start-0 end-0"
+                style="height: 280px; bottom: 0; z-index: 1"
+              >
+                <span>341.62 M</span>
+              </div>
+              <!-- Immigrant (middle) -->
+              <div
+                class="bar-immigrant position-absolute start-0 end-0"
+                style="height: 174px; bottom: 26px; z-index: 2"
+              >
+                <span>47.8 M</span>
+              </div>
+              <!-- Ethnicities (front) -->
+              <div
+                class="bar-ethnicities position-absolute start-0 end-0"
+                style="height: 45px; bottom: 0; z-index: 3"
+              >
+                <span>06</span>
+              </div>
+            </div>
+            <button class="country-btn mt-3">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
+                alt="US Flag"
+              />
+              <span>United States</span>
+            </button>
+          </div>
+          <div class="d-flex flex-column align-items-center">
+            <div
+              class="bar-layered position-relative"
+              style="height: 260px; width: 90px"
+            >
+              <div
+                class="bar-total position-absolute start-0 end-0"
+                style="height: 182px; bottom: 0; z-index: 1"
+              >
+                <span>39.97 M</span>
+              </div>
+              <div
+                class="bar-immigrant position-absolute start-0 end-0"
+                style="height: 72px; bottom: 26px; z-index: 2"
+              >
+                <span>8.36 M</span>
+              </div>
+              <div
+                class="bar-ethnicities position-absolute start-0 end-0"
+                style="height: 45px; bottom: 0; z-index: 3"
+              >
+                <span>06</span>
+              </div>
+            </div>
+            <button class="country-btn mt-3">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg"
+                alt="Canada Flag"
+              />
+              <span>Canada</span>
+            </button>
+          </div>
+          <div class="d-flex flex-column align-items-center">
+            <div
+              class="bar-layered position-relative"
+              style="height: 260px; width: 90px"
+            >
+              <div
+                class="bar-total position-absolute start-0 end-0"
+                style="height: 172px; bottom: 0; z-index: 1"
+              >
+                <span>26.6 M</span>
+              </div>
+              <div
+                class="bar-immigrant position-absolute start-0 end-0"
+                style="height: 65px; bottom: 26px; z-index: 2"
+              >
+                <span>8.2 M</span>
+              </div>
+              <div
+                class="bar-ethnicities position-absolute start-0 end-0"
+                style="height: 50px; bottom: 0; z-index: 3"
+              >
+                <span>07</span>
+              </div>
+            </div>
+            <button class="country-btn mt-3">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/en/b/b9/Flag_of_Australia.svg"
+                alt="Australia Flag"
+              />
+              <span>Australia</span>
+            </button>
+          </div>
+          <div class="d-flex flex-column align-items-center">
+            <div
+              class="bar-layered position-relative"
+              style="height: 260px; width: 90px"
+            >
+              <div
+                class="bar-total position-absolute start-0 end-0"
+                style="height: 115px; bottom: 0; z-index: 1"
+              >
+                <span>5.12 M</span>
+              </div>
+              <div
+                class="bar-immigrant position-absolute start-0 end-0"
+                style="height: 55px; bottom: 26px; z-index: 2"
+              >
+                <span>1.4 M</span>
+              </div>
+              <div
+                class="bar-ethnicities position-absolute start-0 end-0"
+                style="height: 45px; bottom: 0; z-index: 3"
+              >
+                <span>06</span>
+              </div>
+            </div>
+            <button class="country-btn mt-3">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Flag_of_New_Zealand.svg"
+                alt="NZ Flag"
+              />
+              <span>New Zealand</span>
+            </button>
+          </div>
+          <div class="d-flex flex-column align-items-center">
+            <div
+              class="bar-layered position-relative"
+              style="height: 320px; width: 90px"
+            >
+              <div
+                class="bar-total position-absolute start-0 end-0"
+                style="height: 346px; bottom: 0; z-index: 1"
+              >
+                <span>745.6 M</span>
+              </div>
+              <div
+                class="bar-immigrant position-absolute start-0 end-0"
+                style="height: 198px; bottom: 26px; z-index: 2"
+              >
+                <span>44.7 M</span>
+              </div>
+              <div
+                class="bar-ethnicities position-absolute start-0 end-0"
+                style="height: 40px; bottom: 0; z-index: 3"
+              >
+                <span>05</span>
+              </div>
+            </div>
+            <button class="country-btn mt-3">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
+                alt="Europe Flag"
+              />
+              <span>Europe</span>
+            </button>
+          </div>
+          <div class="d-flex flex-column align-items-center">
+            <div
+              class="bar-layered position-relative"
+              style="height: 250px; width: 90px"
+            >
+              <div
+                class="bar-total position-absolute start-0 end-0"
+                style="height: 323px; bottom: 0; z-index: 1"
+              >
+                <span>501 M</span>
+              </div>
+              <div
+                class="bar-immigrant position-absolute start-0 end-0"
+                style="height: 165px; bottom: 26px; z-index: 2"
+              >
+                <span>43 M</span>
+              </div>
+              <div
+                class="bar-ethnicities position-absolute start-0 end-0"
+                style="height: 50px; bottom: 0; z-index: 3"
+              >
+                <span>07</span>
+              </div>
+            </div>
+            <button class="country-btn mt-3">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_United_Arab_Emirates.svg"
+                alt="Middle East Flag"
+              />
+              <span>Middle East</span>
+            </button>
+          </div>
+          <div class="d-flex flex-column align-items-center">
+            <div
+              class="bar-layered position-relative"
+              style="height: 370px; width: 90px"
+            >
+              <div
+                class="bar-total position-absolute start-0 end-0"
+                style="height: 422px; bottom: 0; z-index: 1"
+              >
+                <span>4700 M</span>
+              </div>
+              <div
+                class="bar-immigrant position-absolute start-0 end-0"
+                style="height: 132px; bottom: 26px; z-index: 2"
+              >
+                <span>42 M</span>
+              </div>
+              <div
+                class="bar-ethnicities position-absolute start-0 end-0"
+                style="height: 45px; bottom: 0; z-index: 3"
+              >
+                <span>06</span>
+              </div>
+            </div>
+            <button class="country-btn mt-3">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg"
+                alt="Asia Pacific Flag"
+              />
+              <span>Asia Pacific</span>
+            </button>
+          </div>
+        </div>
+        <!-- Legend -->
+        <div
+          class="d-flex justify-content-center gap-4 mt-4 flex-wrap"
+          style="max-width: 900px; margin: 0 auto"
+        >
+          <div class="d-flex align-items-center gap-2">
+            <span
+              style="
+                display: inline-block;
+                width: 22px;
+                height: 14px;
+                background: #d5deff;
+                border-radius: 3px;
+              "
+            ></span>
+            <span style="font-size: 1rem; font-weight: 600"
+              >Total Population in Millions (M)</span
+            >
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <span
+              style="
+                display: inline-block;
+                width: 22px;
+                height: 14px;
+                background: #ff7575;
+                border-radius: 3px;
+              "
+            ></span>
+            <span style="font-size: 1rem; font-weight: 600"
+              >Immigrant Population in Millions (M)</span
+            >
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <span
+              style="
+                display: inline-block;
+                width: 22px;
+                height: 14px;
+                background: #030b30;
+                border-radius: 3px;
+              "
+            ></span>
+            <span style="font-size: 1rem; font-weight: 600"
+              >Total Ethnicities</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <!-- Title -->
+        <!-- <h2
+          class="text-center mb-5"
+          style="font-weight: 700; font-size: 2rem; letter-spacing: 1px"
+        >
+          <span style="color: #181c2f">A</span
+          ><span style="color: #4e31aa">u</span
+          ><span style="color: #2fa4ff">d</span
+          ><span style="color: #00ffdd">i</span
+          ><span style="color: #ff5e78">e</span
+          ><span style="color: #ff9776">n</span
+          ><span style="color: #ffb55a">c</span
+          ><span style="color: #3a1078">e</span
+          ><span style="color: #4e31aa">s</span>
+        </h2> -->
+        <!-- <h2 class="title-design">Audiences</h2> -->
+        <div class="title-design">
+          <img src="/assets/img/Homepage/image (3).png" alt="" />
+        </div>
+        <!-- Audiences Grid -->
+        <div class="row g-4">
+          <!-- Ethnicities (big card) -->
+          <div class="col-12">
+            <div
+              class="audience-card audience-card-lg position-relative rounded-3 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 4/1 ethnicities.jpeg"
+                alt="Ethnicities"
+                class="w-100 h-100 object-fit-cover"
+              />
+              <div class="audience-overlay d-flex align-items-end p-4">
+                <h3 class="text-white fw-bold mb-2" style="font-size: 1.5rem">
+                  Ethnicities
+                </h3>
+              </div>
+            </div>
+          </div>
+          <!-- 3 Small Cards -->
+          <div class="col-12 col-md-4">
+            <div
+              class="audience-card position-relative rounded-3 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 4/2 newcomers.jpeg"
+                alt="New Comers"
+                class="w-100 h-100 object-fit-cover"
+              />
+              <div class="audience-overlay d-flex align-items-end p-4">
+                <h3 class="text-white fw-bold mb-2" style="font-size: 1.2rem">
+                  New Comers
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div
+              class="audience-card position-relative rounded-3 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 4/3 LGBTQIA.jpeg"
+                alt="LGBTQIA+"
+                class="w-100 h-100 object-fit-cover"
+              />
+              <div class="audience-overlay d-flex align-items-end p-4">
+                <h3 class="text-white fw-bold mb-2" style="font-size: 1.2rem">
+                  Pride
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div
+              class="audience-card position-relative rounded-3 overflow-hidden"
+            >
+              <img
+                src="./assets/img/Homepage/Section 4/4 Niche.jpeg"
+                alt="Niche"
+                class="w-100 h-100 object-fit-cover"
+              />
+              <div class="audience-overlay d-flex align-items-end p-4">
+                <h3 class="text-white fw-bold mb-2" style="font-size: 1.2rem">
+                  Religion
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div
+      style="
+        background-image: url(assets/img/Homepage/Sec\ 5\ &\ Sec\ 6\ Common\ bg.png);
+        background-repeat: no-repeat;
+      "
+    >
+      <section class="py-5" style="color: #fff">
+        <div class="container text-center">
+          <!-- Title with neon glow -->
+          <h2
+            class="mb-3 px-4 py-2 d-inline-block rounded-pill"
+            style="
+              box-shadow: 0 0 3px #6b39ab, 0 0 3px #6b39ab, 0 0 3px #6b39ab,
+                0 0 3px #6b39ab inset;
+              border: 0.1px solid #fff;
+              font-weight: 500;
+              font-size: 1.6rem;
+              letter-spacing: 1.5px;
+              user-select: none;
+              background: transparent;
+            "
+          >
+            Platforms
+          </h2>
+          <p
+            class="mb-5"
+            style="font-size: 0.9rem; opacity: 0.7; user-select: none"
+          >
+            We are integrated with all the leading 3rd party supply partners for
+            advertising including
+          </p>
+
+          <!-- Logos Grid -->
+          <div
+            class="row row-cols-2 row-cols-md-5 g-4 justify-content-center align-items-center"
+            style="background-color: #fff; border-radius: 25px; padding: 20px"
+          >
+            <style>
+              .col {
+                height: 80px;
+                padding: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+              .col img {
+                max-height: 50px;
+                width: auto;
+                object-fit: contain;
+              }
+              .platform-logo-container {
+                height: 80px;
+                padding: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+
+              .platform-logo {
+                max-height: 50px;
+                width: auto;
+                object-fit: contain;
+              }
+
+              @media (max-width: 767px) {
+                .platform-logo-container {
+                  height: 70px;
+                  padding: 10px;
+                }
+
+                .platform-logo {
+                  max-height: 30px;
+                }
+              }
+            </style>
+            <!-- Each logo item -->
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/DV360-logo-3.png"
+                alt="display & video 360"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/google ad manager.png"
+                alt="Google Ad Manager"
+                style="max-height: 80px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/yahoo-dsp-logo.png"
+                alt="Yahoo DSP"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/xandr-logo-freelogovectors.net_-400x101.png"
+                alt="Xandr"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/mediamath-logo-vector-2022.svg"
+                alt="MediaMath"
+                style="max-height: 160px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/Amazon-DSP -Logo.png"
+                alt="Amazon DSP"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/thetradedesk-logolockup-rgb-type-01-half.png"
+                alt="The Trade Desk"
+                style="max-height: 60px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+
+            <!-- Add more logos similarly -->
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/AAC.png"
+                alt="Adobe Advertising Cloud"
+                style="max-height: 70px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/Adroll_logo.png"
+                alt="AdRoll"
+                style="max-height: 140px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/taboola-logo_brandlogos.net_z1jhe.png"
+                alt="Taboola"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/SmartyAds-logo.png"
+                alt="SmartyAds"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/Verizon_Media_2019_logo.svg.png"
+                alt="Verizon Media"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/adform.png"
+                alt="Adform"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/Magnite-logo-black.svg-1024x332.png"
+                alt="Magnite"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/OpenX_Logo-700x274.png"
+                alt="OpenX"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/PubMatic_Logo.png"
+                alt="PubMatic"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/MoPub-logo.svg"
+                alt="MoPub"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/Inmobi-logo.svg-1024x150.png"
+                alt="InMobi"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/Appsflyer.png"
+                alt="AppsFlyer"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/Lotame-logo.png"
+                alt="Lotame"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/Oracle-Bluekai.png"
+                alt="Oracle BlueKai"
+                style="max-height: 60px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/Adobe-Audience-Manager.png"
+                alt="Adobe Audience Manager"
+                style="max-height: 70px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/neustar-vector-logo.png"
+                alt="Neustar"
+                style="max-height: 40px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/salesforce-com.png"
+                alt="Salesforce DMP"
+                style="max-height: 70px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
+              <img
+                src="./assets/img/Homepage/Section 5/Platforms/onaudience.png"
+                alt="OnAudience"
+                style="max-height: 140px; max-width: 100%; object-fit: contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-5" style="color: #fff; padding: 0px">
+        <div class="text-center mb-4">
+          <span
+            style="
+              border: 2px solid #9221e5;
+              border-radius: 30px;
+              padding: 3px 30px;
+              font-weight: 600;
+              font-size: 1.3rem;
+              color: #fff;
+              display: inline-block;
+              user-select: none;
+            "
+            >Channels</span
+          >
+        </div>
+        <div class="container-fluid px-5">
+          <div class="row gx-0 gy-0">
+            <!-- Row 1 -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div
+                class="adtype-tile h-100 d-flex flex-column justify-content-end"
+                style="background: #fff"
+              >
+                <img
+                  src="./assets/img/Homepage/Section 6/Display Ads1.1.jpg"
+                  alt="Display Ads"
+                  class="img-fluid w-110"
+                  style="object-fit: cover; height: 220px"
+                />
+              </div>
+            </div>
+            <div class="col-6 col-md-3 col-lg-4">
+              <div
+                class="adtype-tile h-100 d-flex flex-column justify-content-end"
+                style="background: #a2444b"
+              >
+                <img
+                  src="./assets/img/Homepage/Section 6/video ads.jpg"
+                  alt="Video Ads"
+                  class="img-fluid w-100"
+                  style="object-fit: cover; height: 220px"
+                />
+                <div
+                  class="p-2 position-absolute bottom-0 start-0 text-white"
+                  style="font-size: 1.1rem; font-weight: 600"
+                >
+                  Video Ads
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3 col-lg-4">
+              <div
+                class="adtype-tile h-100 d-flex flex-column justify-content-end"
+                style="background: #181c2f"
+              >
+                <img
+                  src="./assets/img/Homepage/Section 6/Social Media ads/mockup for the GIF.jpg"
+                  alt="Social Media Ads"
+                  class="img-fluid w-100"
+                  style="object-fit: cover; height: 220px"
+                />
+                <div
+                  class="p-2 position-absolute top-0 end-0 text-white"
+                  style="font-size: 1.1rem; font-weight: 600"
+                >
+                  Social Media Ads
+                </div>
+              </div>
+            </div>
+            <!-- Row 2 -->
+            <div class="col-12 col-md-4 col-lg-3">
+              <div
+                class="adtype-tile h-100 d-flex flex-column justify-content-end"
+                style="background: #7e4fff"
+              >
+                <img
+                  src="./assets/img/Homepage/Section 6/Search Engine Ads PPC 1.jpg"
+                  alt="Search Engine Ads"
+                  class="img-fluid w-100"
+                  style="object-fit: cover; height: 180px"
+                />
+                <div
+                  class="p-2 position-absolute top-0 start-0 text-white"
+                  style="font-size: 1rem; font-weight: 600"
+                >
+                  Search Engine Ads<br />(PPC)
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <div
+                class="adtype-tile h-100 d-flex flex-column justify-content-end"
+                style="background: #222"
+              >
+                <img
+                  src="./assets/img/Homepage/Section 6/Native ads banner.jpg"
+                  alt="Native Ads"
+                  class="img-fluid w-100"
+                  style="object-fit: cover; height: 180px"
+                />
+                <div
+                  class="p-2 position-absolute top-0 start-0 text-white"
+                  style="font-size: 1rem; font-weight: 600"
+                >
+                  Native Ads
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <div
+                class="adtype-tile h-100 d-flex flex-column justify-content-end position-relative"
+                style="background: #eee"
+              >
+                <video
+                  src="./assets/img/Homepage/Section 6/Email Ads 1.mp4"
+                  class="w-100"
+                  style="object-fit: cover; height: 260px"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                ></video>
+
+                <div
+                  class="p-2 position-absolute bottom-0 start-0"
+                  style="color: #fff; font-size: 1rem; font-weight: 600"
+                >
+                  Email & Newsletter Ads
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4 col-lg-3">
+              <div
+                class="adtype-tile h-100 d-flex flex-column justify-content-end"
+                style="background: #f2f2f2"
+              >
+                <img
+                  src="./assets/img/Homepage/Section 6/influencer copy.jpg"
+                  alt="Influencer & Affiliate Ads"
+                  class="img-fluid w-20"
+                  style="object-fit: contain; height: 260px"
+                />
+                <div
+                  class="p-2 position-absolute bottom-0 start-0"
+                  style="color: #222; font-size: 1rem; font-weight: 600"
+                >
+                  Influencer & Affiliate Ads
+                </div>
+              </div>
+            </div>
+            <!-- Row 3 -->
+            <div class="col-6 col-md-4 col-lg-4">
+              <div
+                class="adtype-tile h-100 d-flex flex-column justify-content-end position-relative"
+                style="background: #181c2f"
+              >
+                <video
+                  src="./assets/img/Homepage/Section 6/Audio ads 1.mp4"
+                  class="w-100"
+                  style="object-fit: cover; height: 260px"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                ></video>
+
+                <div
+                  class="p-2 position-absolute top-0 end-0 text-white"
+                  style="font-size: 1rem; font-weight: 600"
+                >
+                  Audio & Podcast Ads
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <div
+                class="adtype-tile h-100 d-flex flex-column justify-content-end position-relative"
+              >
+                <video
+                  src="./assets/img/Homepage/Section 6/Connected TV 1.1.mp4"
+                  class="w-100"
+                  style="object-fit: cover; height: 260px"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                ></video>
+
+                <div
+                  class="p-2 position-absolute bottom-0 start-0 align-items-center justify-content-center"
+                  style="color: #633663; font-size: 1rem; font-weight: 600"
+                >
+                  Connected TV (CTV) & OTT Ads
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-4 col-lg-5">
+              <div
+                class="adtype-tile h-100 d-flex flex-column justify-content-end position-relative"
+                style="background: #fff"
+              >
+                <video
+                  src="./assets/img/Homepage/Section 6/digital out of home.mp4"
+                  class="w-100"
+                  style="object-fit: cover; height: 260px"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                ></video>
+
+                <div
+                  class="p-2 position-absolute bottom-0 end-0"
+                  style="color: #fff; font-size: 1rem; font-weight: 600"
+                >
+                  Digital Out-of-Home Ads
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section class="py-5 bg-white">
+      <div class="container">
+        <!-- <h2
+            class="text-center mb-4"
+            style="font-weight: 700; letter-spacing: 1px; color: #333"
+          >
+            Brands
+          </h2> -->
+        <!-- <h2 class="title-design">Brands</h2> -->
+        <div class="title-design">
+          <img
+            style="width: 80px"
+            src="/assets/img/Homepage/image (4).png"
+            alt=""
+          />
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div
+              class="brands-grid d-flex flex-wrap justify-content-center align-items-center"
+            >
+              <!-- Row 1 -->
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Virgin_Mobile_Polska-Logo.wine.png"
+                alt="Virgin"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Bell_Canada-Logo.wine.png"
+                alt="Bell"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/MCD.png"
+                alt="McDonald's"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/TJX_Logo.svg.png"
+                alt="TJX"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Rogers_logo.svg.png"
+                alt="Rogers"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Lucky_Mobile_logo.png"
+                alt="Lucky Mobile"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Fido_Solutions_logo.svg.png"
+                alt="Fido"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/chatr-mobile.png"
+                alt="Chatr"
+                class="brand-logo"
+              />
+              <!-- Row 2 -->
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/TD bank.png"
+                alt="TD Bank"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/MoneyGram_Logo.svg.png"
+                alt="MoneyGram"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Kruger-Logo.svg.png"
+                alt="Kruger"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Telstra_logo_PNG6.png"
+                alt="Telstra"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Mitre_10_(NZ)_logo.svg.png"
+                alt="Mitre 10"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Skrill_logo.svg.png"
+                alt="Skrill"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/InstaRem_logo.svg.png"
+                alt="Instarem"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/lifepay copy.png"
+                alt="Lifepay"
+                class="brand-logo w-50 h-50"
+              />
+              <!-- Row 3 -->
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/the-university-of-sydney-3-logo-black-and-white.png"
+                alt="University of Sydney"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/WAU.svg"
+                alt="Western Atlantic University"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/AUA.png"
+                alt="American University of Antigua"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/TPG_Telecom_logo.svg"
+                alt="TRG"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Etisalat_eand_Logo_EN.svg.png"
+                alt="Etisalat"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/sanomed pharm.png"
+                alt="Sanomed"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/IG_Group_logo.jpg"
+                alt="IG"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Unsmoke-Canada-logo-Sep23-EN.svg"
+                alt="Unsmoke Canada"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/sonyliv-logo-freelogovectors.net_-400x400.png"
+                alt="Sony Liv"
+                class="brand-logo"
+              />
+              <!-- Row 4 -->
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Adidas_logo.png"
+                alt="Adidas"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/BMW.png"
+                alt="BMW"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/GoDaddy_logo.svg.png"
+                alt="GoDaddy"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/masterchef.png"
+                alt="MasterChef"
+                class="brand-logo w-50 h-40"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/RBC_(2).png"
+                alt="RBC"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/SBI.png"
+                alt="SBI"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/SkinCeuticalslogo.png"
+                alt="SkinCeuticals"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Toyota.png"
+                alt="Toyota"
+                class="brand-logo"
+              />
+              <!-- Row 5 -->
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/uber.jpg"
+                alt="Uber"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Visa_Inc._logo.svg.png"
+                alt="Visa"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Western-Union-Logo.png"
+                alt="Western Union"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/HSBC.png"
+                alt="HSBC"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Walmart_logo.svg.png"
+                alt="Walmart"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/range-rover-2.svg"
+                alt="Range Rover"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/telas.svg"
+                alt="Telus"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/A&W.svg"
+                alt="A&W"
+                class="brand-logo"
+              />
+              <!-- Row 6 -->
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/LEGO_logo.svg.png"
+                alt="Lego"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/nrma-help-company.png"
+                alt="NRMA"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/HSBC.png"
+                alt="A Help Company"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Glentel_logo.svg.png"
+                alt="Glentel"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/TBooth_Logo_2022_RGB_CLR_EN.png"
+                alt="Booth Wireless"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/WIRELESSWAVE_logocolour.png"
+                alt="WirelessWave"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/worksafebc_logo.jpg"
+                alt="WorkSafe BC"
+                class="brand-logo"
+              />
+              <img
+                src="./assets/img/Homepage/Section 7/Brands Logo/Pringles.svg"
+                alt="Pringles"
+                class="brand-logo"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-studies-section">
+      <div class="cont">
+        <!-- <div class="case-studies-title"><span>Case Studies</div> -->
+        <!-- <div class="case-studies-title"><img src="./assets/img/Homepage/image.png" alt=""></div> -->
+        <!-- <h2 class="title-design">Case Studies</h2> -->
+        <div class="title-design">
+          <img src="/assets/img/Homepage/image (5).png" alt="" />
+        </div>
+        <!-- First marquee row: right to left -->
+        <div class="marquee-row">
+          <div class="marquee-track">
+            <!-- Repeat for seamless loop -->
+            <div class="brand-card">
+              <img
+                src="./assets/img/Homepage/Section 8/Adidas2.png"
+                alt="Adidas"
+              />
+              <!-- <span class="brand-logos">Adidas</span> -->
+            </div>
+            <div class="brand-card">
+              <img src="./assets/img/Homepage/Section 8/Bell.png" alt="Bell" />
+              <!-- <span class="brand-logos">Bell</span> -->
+            </div>
+            <div class="brand-card">
+              <img src="./assets/img/Homepage/Section 8/BMW.png" alt="BMW" />
+              <!-- <span class="brand-logos">BMW</span> -->
+            </div>
+            <div class="brand-card">
+              <img
+                src="./assets/img/Homepage/Section 8/Godaddy.png"
+                alt="GoDaddy"
+              />
+              <!-- <span class="brand-logos">GoDaddy</span> -->
+            </div>
+            <div class="brand-card">
+              <img
+                src="./assets/img/Homepage/Section 8/Masterchef.png"
+                alt="Master Chef"
+              />
+              <!-- <span class="brand-logos">Master Chef</span> -->
+            </div>
+            <div class="brand-card">
+              <img
+                src="./assets/img/Homepage/Section 8/Adidas2.png"
+                alt="Adidas"
+              />
+              <!-- <span class="brand-logos">Adidas</span> -->
+            </div>
+            <div class="brand-card">
+              <img src="./assets/img/Homepage/Section 8/Bell.png" alt="Bell" />
+              <!-- <span class="brand-logos">Bell</span> -->
+            </div>
+            <div class="brand-card">
+              <img src="./assets/img/Homepage/Section 8/BMW.png" alt="BMW" />
+              <!-- <span class="brand-logos">BMW</span> -->
+            </div>
+            <div class="brand-card">
+              <img
+                src="./assets/img/Homepage/Section 8/Godaddy.png"
+                alt="GoDaddy"
+              />
+              <!-- <span class="brand-logos">GoDaddy</span> -->
+            </div>
+            <div class="brand-card">
+              <img
+                src="./assets/img/Homepage/Section 8/Masterchef.png"
+                alt="Master Chef"
+              />
+              <!-- <span class="brand-logos">Master Chef</span> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Second marquee row: left to right -->
+        <div class="marquee-row reverse">
+          <div class="marquee-track">
+            <div class="brand-card">
+              <img
+                src="./assets/img/Homepage/Section 8/MC d.png"
+                alt="McDonald's"
+              />
+              <!-- <span class="brand-logos">McDonald's</span> -->
+            </div>
+            <div class="brand-card">
+              <img
+                src="./assets/img/Homepage/Section 8/Mitre 10.png"
+                alt="MITRE 10"
+              />
+              <!-- <span class="brand-logos">MITRE 10</span> -->
+            </div>
+            <div class="brand-card">
+              <img src="./assets/img/Homepage/Section 8/TD.png" alt="TD Bank" />
+              <!-- <span class="brand-logos">TD Bank</span> -->
+            </div>
+            <div class="brand-card">
+              <img src="./assets/img/Homepage/Section 8/TJX.png" alt="TJX" />
+              <!-- <span class="brand-logos">TJX</span> -->
+            </div>
+            <div class="brand-card">
+              <img src="./assets/img/Homepage/Section 8/visa.png" alt="VISA" />
+              <!-- <span class="brand-logos">VISA</span> -->
+            </div>
+            <div class="brand-card">
+              <img
+                src="./assets/img/Homepage/Section 8/MC d.png"
+                alt="McDonald's"
+              />
+              <!-- <span class="brand-logos">McDonald's</span> -->
+            </div>
+            <div class="brand-card">
+              <img
+                src="./assets/img/Homepage/Section 8/Mitre 10.png"
+                alt="MITRE 10"
+              />
+              <!-- <span class="brand-logos">MITRE 10</span> -->
+            </div>
+            <div class="brand-card">
+              <img src="./assets/img/Homepage/Section 8/TD.png" alt="TD Bank" />
+              <!-- <span class="brand-logos">TD Bank</span> -->
+            </div>
+            <div class="brand-card">
+              <img src="./assets/img/Homepage/Section 8/TJX.png" alt="TJX" />
+              <!-- <span class="brand-logos">TJX</span> -->
+            </div>
+            <div class="brand-card">
+              <img src="./assets/img/Homepage/Section 8/visa.png" alt="VISA" />
+              <!-- <span class="brand-logos">VISA</span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="cta-section w-100 py-5 " style="background: radial-gradient(circle at center, #1a0e3a 0%, #0a0517 100%); color: white;"> -->
+    <!-- <div class="row justify-content-center text-center text-md-center align-items-center" style="max-width: 900px; margin: 0 auto;"> -->
+    <!-- Media Kit -->
+    <section class="cta-section w-100 py-5 position-relative text-white">
+      <!-- Background Image & Overlay -->
+      <div
+        class="cta-bg-overlay position-absolute top-0 start-0 w-100 h-100"
+        style="
+          background: url('assets/img/Homepage/Section 9/BG - Main.jpg') center
+            center / cover no-repeat;
+        "
+      ></div>
+
+      <!-- Content -->
+      <div
+        class="row justify-content-center text-center text-md-center align-items-center position-relative"
+        style="max-width: 900px; margin: 0 auto; z-index: 2"
+      >
+        <!-- Media Kit -->
+        <div class="col-md-6 mb-4 mb-md-0">
+          <h5 class="fw-bold">Media-Kit</h5>
+          <p class="text-muted mb-5">
+            Download free media-kit &amp; get to know us better
+          </p>
+          <a
+            href="#"
+            class="btn btn-outline-primary rounded-pill px-4 py-2"
+            style="border-color: #a259ff; color: #fff; transition: all 0.3s"
+          >
+            Download Now
+          </a>
+        </div>
+        <!-- Contact Us -->
+        <div class="col-md-6">
+          <h5 class="fw-bold">
+            Get in touch with us.<br />We're here to assist you
+          </h5>
+          <p class="text-muted mb-3">
+            Want to work with us? Got a project you want us to handle?
+          </p>
+          <a
+            href="#"
+            class="btn btn-outline-primary rounded-pill px-4 py-2"
+            style="border-color: #a259ff; color: #fff; transition: all 0.3s"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        const logo = document.getElementById("navbarLogo");
+        if (window.scrollY > 40) {
+          navbar.classList.add("scrolled");
+          logo.src = "assets/img/Logo/BILLION TAGS PNG.png"; // Replace with your alternate logo URL
+        } else {
+          navbar.classList.remove("scrolled");
+          logo.src = "assets/img/Logo/BILLION TAGS PNG white.png";
+          // Original logo URL
+        }
+      });
+    </script>
+  </body>
+</html>
